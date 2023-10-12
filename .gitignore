@@ -1,0 +1,15 @@
+# common IDEs to be ignored
+.idea/
+.metals/
+.vscode/
+
+# build tool specific entries
+.bsp
+.bloop
+target
+metals.sbt
+project/project
+
+# nix & dirnev
+.direnv/
+.envrc
