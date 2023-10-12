@@ -1,7 +1,7 @@
 package com.lvitaly.api
 
-import com.intellias.api.endpoints.{*, given}
-import com.intellias.api.model.{*, given}
+import com.lvitaly.api.endpoints.{*, given}
+import com.lvitaly.api.model.{*, given}
 import sttp.client3.testing.SttpBackendStub
 import sttp.client3.{UriContext, basicRequest}
 import sttp.tapir.server.stub.TapirStubInterpreter
