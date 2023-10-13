@@ -1,6 +1,7 @@
-package com.lvitaly.api.service
+package com.lvitaly.api
+package service
 
-import com.lvitaly.api.model.*
+import model.*
 import zio.config.*
 import zio.config.magnolia.deriveConfig
 import zio.config.typesafe.TypesafeConfigProvider

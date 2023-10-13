@@ -1,8 +1,7 @@
 package com.lvitaly.api
 package service
 
-import model.auth.*
-import model.{AppConfig, AuthorizationError}
+import model.*
 import zio.*
 
 trait AuthorizationService:

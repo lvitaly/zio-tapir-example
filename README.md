@@ -37,7 +37,7 @@ nix-shell shell.nix
 ## Todo list
 
 - [x] Create a basic API to query books
-- [ ] Remove usage of package objects cause it's deprecated in the Scala 3 (see [here](https://docs.scala-lang.org/scala3/reference/dropped-features/package-objects.html))
+- [x] Remove usage of package objects cause it's deprecated in the Scala 3 (see [here](https://docs.scala-lang.org/scala3/reference/dropped-features/package-objects.html))
 - [ ] Add DB layer
 - [ ] Add tests
 

@@ -14,18 +14,18 @@ package object v1 extends Resolvers:
       .out(jsonBody[List[Book]])
       .errorJsonOut
 
-  private val booksAll: AppEndpoint =
+  private val booksAll: ApiEndpoint =
     books
       .in("all")
       .securityBearer()
       .serverLogic(session => unit => getBooks)
 
-  private val booksByYear: AppEndpoint =
+  private val booksByYear: ApiEndpoint =
     books
       .in(query[Int]("year"))
       .zServerLogic(year => getBooks(year))
 
-  val endpoints: List[AppEndpoint] =
+  val endpoints: List[ApiEndpoint] =
     List(
       booksAll,
       booksByYear
