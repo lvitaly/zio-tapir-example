@@ -3,7 +3,7 @@
 zio-tapir-example
 ===
 
-This is an example of how [ZIO ecosystem](https://zio.dev/ecosystem/) and [tapir](https://tapir.softwaremill.com/) library can be used to build a mature API server.
+This is an example of how [ZIO ecosystem](https://zio.dev/ecosystem/) and [tapir](https://tapir.softwaremill.com/) library can be used to build a mature API server. The project uses Scala 3, but almost the same code can be adopted to build a project with Scala 2.13 or even with Scala 2.12.
 
 ## Quick start
 
