@@ -1,7 +1,6 @@
 package com.lvitaly.api
 package server
 
-import model.AppConfig
 import sttp.tapir.server.ziohttp.{ZioHttpInterpreter, ZioHttpServerOptions}
 import zio.*
 import zio.http.{HttpApp, Server}
@@ -13,7 +12,9 @@ private val options: ZioHttpServerOptions[AppEnv] =
 
 private val app: HttpApp[AppEnv, Throwable] = ZioHttpInterpreter(options).toHttp(endpoints.all)
 
-val live: RLayer[AppConfig, Server] = ZLayer(ZIO.serviceWith[AppConfig](_.server)) >>> Server.live
+private val config: Layer[Config.Error, Server.Config] = ZLayer(ZIO.config(Server.Config.config.nested("server")))
+
+val live: TaskLayer[Server] = config >>> Server.live
 
 val serve: URIO[AppEnv, Unit] =
   for {

@@ -10,15 +10,11 @@ import zio.{Config, Layer, ZIO, ZLayer}
 
 object ConfigService:
   private val config: Config[AppConfig] = {
-    Server.Config.config.nested("server") ++
-      deriveConfig[AppAuthConfig].nested("auth") ++
-      deriveConfig[List[Book]].nested("books")
+    deriveConfig[AppAuthConfig].nested("auth") ++
+    deriveConfig[List[Book]].nested("books")
   }.to[AppConfig]
 
   val live: Layer[Config.Error, AppConfig] =
     ZLayer {
-      TypesafeConfigProvider
-        .fromResourcePath()
-        .load(config)
-        .tap(c => ZIO.logDebug(s"AppConfig: $c"))
+      ZIO.config(config).tap(c => ZIO.logDebug(s"AppConfig: $c"))
     }
