@@ -1,4 +1,4 @@
-val tapirVersion = "1.8.1"
+val tapirVersion = "1.8.2"
 val zioVersion   = "2.0.18"
 
 lazy val rootProject = (project in file(".")).settings(
