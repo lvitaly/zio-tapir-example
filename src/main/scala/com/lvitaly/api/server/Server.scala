@@ -10,7 +10,7 @@ private val options: ZioHttpServerOptions[AppEnv] =
     .metricsInterceptor(endpoints.prometheusMetrics.metricsInterceptor())
     .options
 
-private val app: HttpApp[AppEnv, Throwable] = ZioHttpInterpreter(options).toHttp(endpoints.all)
+private val app: HttpApp[AppEnv] = ZioHttpInterpreter(options).toHttp(endpoints.all)
 
 private val config: Layer[Config.Error, Server.Config] = ZLayer(ZIO.config(Server.Config.config.nested("server")))
 
@@ -18,7 +18,7 @@ val live: TaskLayer[Server] = config >>> Server.live
 
 val serve: URIO[AppEnv, Unit] =
   for {
-    port <- Server.install(app.withDefaultErrorResponse)
+    port <- Server.install(app)
     _    <- ZIO.logInfo(s"Go to http://localhost:$port/docs for Swagger UI")
     _    <- ZIO.never
   } yield ()
