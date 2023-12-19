@@ -1,5 +1,7 @@
-val tapirVersion = "1.8.4"
-val zioVersion   = "2.0.18"
+val tapirVersion      = "1.9.5"
+val zioVersion        = "2.0.20"
+val zioConfigVersion  = "4.0.0-RC16"
+val zioLoggingVersion = "2.1.16"
 
 lazy val rootProject = (project in file(".")).settings(
   Seq(
@@ -24,17 +26,17 @@ lazy val tapirKit = Seq(
 lazy val zioKit = Seq(
   "dev.zio" %% "zio"                 % zioVersion,
   "dev.zio" %% "zio-streams"         % zioVersion,
-  "dev.zio" %% "zio-logging"         % "2.1.14",
-  "dev.zio" %% "zio-logging-slf4j"   % "2.1.14",
-  "dev.zio" %% "zio-config"          % "4.0.0-RC16",
-  "dev.zio" %% "zio-config-magnolia" % "4.0.0-RC16",
-  "dev.zio" %% "zio-config-typesafe" % "4.0.0-RC16",
+  "dev.zio" %% "zio-logging"         % zioLoggingVersion,
+  "dev.zio" %% "zio-logging-slf4j"   % zioLoggingVersion,
+  "dev.zio" %% "zio-config"          % zioConfigVersion,
+  "dev.zio" %% "zio-config-magnolia" % zioConfigVersion,
+  "dev.zio" %% "zio-config-typesafe" % zioConfigVersion,
   "dev.zio" %% "zio-test"            % zioVersion % Test,
   "dev.zio" %% "zio-test-sbt"        % zioVersion % Test
 )
 
 lazy val basicKit = Seq(
-  "ch.qos.logback" % "logback-classic" % "1.4.11"
+  "ch.qos.logback" % "logback-classic" % "1.4.12"
 )
 
 lazy val revolverSettings = Revolver.settings ++ Seq(

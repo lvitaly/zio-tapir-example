@@ -1,7 +1,7 @@
 let
   pkgs = import <nixpkgs> {};
 
-  jdk = pkgs.graalvm17-ce;
+  jdk = pkgs.graalvm-ce;
 
   sbt = pkgs.sbt.override {
     jre = jdk;
