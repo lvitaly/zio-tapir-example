@@ -24,6 +24,18 @@ sbt reStart # run the application (Main)
 sbt reStop # stop the application (Main)
 ```
 
+## Features
+
+After application started, you will see next message in the console:
+```shell
+rootProject 2024-04-05 23:16:38,120 | INFO | ZScheduler-Worker-6 | c.l.a.s.Server$package | Go to http://localhost:8000/docs for Swagger UI
+```
+
+You can reach Swagger UI by the http://localhost:8000/docs link and Prometheus metrics by the http://localhost:8000/metrics link.
+To access authorized endpoints, use the `auth.token` from the `application.conf` file.
+_Please note that this authorization technique is used only for example purposes._
+_In real life, you should consider proper access management solutions._
+
 ## Todo list
 
 - [x] Create a basic API to query books
