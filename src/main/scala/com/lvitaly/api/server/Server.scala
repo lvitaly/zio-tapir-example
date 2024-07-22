@@ -3,14 +3,14 @@ package server
 
 import sttp.tapir.server.ziohttp.{ZioHttpInterpreter, ZioHttpServerOptions}
 import zio.*
-import zio.http.{HttpApp, Server}
+import zio.http.{Response, Routes, Server}
 
 private val options: ZioHttpServerOptions[AppEnv] =
   ZioHttpServerOptions.customiseInterceptors
     .metricsInterceptor(endpoints.prometheusMetrics.metricsInterceptor())
     .options
 
-private val app: HttpApp[AppEnv] = ZioHttpInterpreter(options).toHttp(endpoints.all)
+private val app: Routes[AppEnv, Response] = ZioHttpInterpreter(options).toHttp(endpoints.all)
 
 private val config: Layer[Config.Error, Server.Config] = ZLayer(ZIO.config(Server.Config.config.nested("server")))
 
