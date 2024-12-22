@@ -10,7 +10,7 @@ package object v1 extends Resolvers:
 
   private val books =
     endpoint.get
-      .in("books")
+      .in(apiV1 / "books")
       .out(jsonBody[List[Book]])
       .errorJsonOut
 

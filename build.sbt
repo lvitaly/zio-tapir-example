@@ -1,14 +1,14 @@
-val tapirVersion      = "1.10.14"
-val zioVersion        = "2.1.6"
+val tapirVersion      = "1.11.10"
+val zioVersion        = "2.1.14"
 val zioConfigVersion  = "4.0.2"
-val zioLoggingVersion = "2.3.0"
+val zioLoggingVersion = "2.4.0"
 
 lazy val rootProject = (project in file(".")).settings(
   Seq(
     name           := "zio-tapir-example",
     version        := "0.1.0-SNAPSHOT",
     organization   := "com.lvitaly.api",
-    scalaVersion   := "3.3.3",
+    scalaVersion   := "3.3.4",
     libraryDependencies ++= tapirKit ++ zioKit ++ basicKit,
     testFrameworks := Seq(new TestFramework("zio.test.sbt.ZTestFramework"))
   )
@@ -20,7 +20,7 @@ lazy val tapirKit = Seq(
   "com.softwaremill.sttp.tapir"   %% "tapir-swagger-ui-bundle"  % tapirVersion,
   "com.softwaremill.sttp.tapir"   %% "tapir-json-zio"           % tapirVersion,
   "com.softwaremill.sttp.tapir"   %% "tapir-sttp-stub-server"   % tapirVersion % Test,
-  "com.softwaremill.sttp.client3" %% "zio-json"                 % "3.9.7"      % Test
+  "com.softwaremill.sttp.client3" %% "zio-json"                 % "3.10.1"     % Test
 )
 
 lazy val zioKit = Seq(
@@ -36,7 +36,7 @@ lazy val zioKit = Seq(
 )
 
 lazy val basicKit = Seq(
-  "ch.qos.logback" % "logback-classic" % "1.5.3"
+  "ch.qos.logback" % "logback-classic" % "1.5.15"
 )
 
 lazy val revolverSettings = Revolver.settings ++ Seq(
