@@ -41,7 +41,7 @@ _In real life, you should consider proper access management solutions._
 - [x] Create a basic API to query books
 - [x] Remove usage of package objects cause it's deprecated in the Scala 3 (see [here](https://docs.scala-lang.org/scala3/reference/dropped-features/package-objects.html))
 - [ ] Add DB layer
-- [ ] Add tests
+- [x] Add tests
 
 ## Links:
 
