@@ -1,7 +1,11 @@
-val tapirVersion      = "1.11.11"
+val tapirVersion      = "1.11.12"
 val zioVersion        = "2.1.14"
-val zioConfigVersion  = "4.0.2"
+val zioConfigVersion  = "4.0.3"
 val zioLoggingVersion = "2.4.0"
+val protoQuillVersion = "4.8.6"
+val h2Version         = "2.3.232"
+val hikariCPVersion   = "6.2.1"
+val magnumVersion     = "2.0.0-M1"
 
 lazy val rootProject = (project in file(".")).settings(
   Seq(
@@ -9,8 +13,9 @@ lazy val rootProject = (project in file(".")).settings(
     version        := "0.1.0-SNAPSHOT",
     organization   := "com.lvitaly.api",
     scalaVersion   := "3.3.4",
-    libraryDependencies ++= tapirKit ++ zioKit ++ basicKit,
-    testFrameworks := Seq(new TestFramework("zio.test.sbt.ZTestFramework"))
+    libraryDependencies ++= tapirKit ++ zioKit ++ jdbcKit ++ basicKit,
+    testFrameworks := Seq(new TestFramework("zio.test.sbt.ZTestFramework")),
+    Test / fork    := true
   )
 )
 
@@ -20,7 +25,7 @@ lazy val tapirKit = Seq(
   "com.softwaremill.sttp.tapir"   %% "tapir-swagger-ui-bundle"  % tapirVersion,
   "com.softwaremill.sttp.tapir"   %% "tapir-json-zio"           % tapirVersion,
   "com.softwaremill.sttp.tapir"   %% "tapir-sttp-stub-server"   % tapirVersion % Test,
-  "com.softwaremill.sttp.client3" %% "zio-json"                 % "3.10.1"     % Test
+  "com.softwaremill.sttp.client3" %% "zio-json"                 % "3.10.2"     % Test
 )
 
 lazy val zioKit = Seq(
@@ -35,8 +40,14 @@ lazy val zioKit = Seq(
   "dev.zio" %% "zio-test-sbt"        % zioVersion % Test
 )
 
+lazy val jdbcKit = Seq(
+  "com.h2database"   % "h2"        % h2Version,
+  "com.zaxxer"       % "HikariCP"  % hikariCPVersion,
+  "com.augustnagro" %% "magnumzio" % magnumVersion
+)
+
 lazy val basicKit = Seq(
-  "ch.qos.logback" % "logback-classic" % "1.5.15"
+  "ch.qos.logback" % "logback-classic" % "1.5.16"
 )
 
 lazy val revolverSettings = Revolver.settings ++ Seq(

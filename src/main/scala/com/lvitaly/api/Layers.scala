@@ -1,15 +1,19 @@
 package com.lvitaly.api
 
 import com.lvitaly.api.model.AppConfig
-import com.lvitaly.api.service.*
 import zio.http.Server
-import zio.{TaskLayer, ZLayer}
+import zio.{ZLayer, TaskLayer}
 
-type AppEnv = AppConfig with Server with AuthorizationService
+type AppEnv = AppConfig 
+  & Server 
+  & repository.Repository 
+  & service.Service
 
 val appEnv: TaskLayer[AppEnv] =
   ZLayer.make[AppEnv](
-    ConfigService.live,
-    AuthorizationService.live,
+    config.live,
+    repository.live,
+    service.live,
     server.live,
+    db.live
   )

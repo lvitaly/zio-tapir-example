@@ -1,16 +1,13 @@
-package com.lvitaly.api
-package service
+package com.lvitaly.api.service
 
-import model.*
+import com.lvitaly.api.model.*
 import zio.*
 
 trait AuthorizationService:
-  def authorize(token: MaybeToken, requiredRoles: Set[UserRole]): AuthorizationService.AuthIO
+  def authorize(token: MaybeToken, requiredRoles: Set[UserRole]): IO[AuthorizationError, AuthUserSession]
 
 object AuthorizationService:
-  type AuthIO = IO[AuthorizationError, AuthUserSession]
-
-  val live: URLayer[AppConfig, AuthorizationService] = ZLayer {
+  val layer: URLayer[AppConfig, AuthorizationService] = ZLayer {
     ZIO.serviceWith[AppConfig] { config => (token: MaybeToken, requiredRoles: Set[UserRole]) =>
       if token.value == config.auth.token
       then ZIO.succeed(AuthUserSession(ValidToken(token.value), "The Dude"))

@@ -34,14 +34,18 @@ object EndpointsSpec extends ZIOSpecDefault with ZIOAppRuntime:
       // then
       assertZIO(response.map(_.body))(isRight(isNonEmpty))
     } +
-      test("list available books by year") {
+      test("list available books by height") {
+        val height = 211
+
         // when
         val response = basicRequest
-          .get(uri"http://test.com/api/v1/books?year=1888")
+          .get(uri"http://test.com/api/v1/books?height=$height")
           .response(asJson[List[Book]])
           .send(backendStub)
 
         // then
-        assertZIO(response.map(_.body))(isRight(isEmpty || assertion("should contain year 1888")(_.exists(_.year == 1888))))
+        assertZIO(response.map(_.body))(isRight(assertion(s"should contain height $height")(_.exists(_.height == height))))
       }
   }.provide(appEnv)
+
+end EndpointsSpec

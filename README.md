@@ -18,7 +18,6 @@ nix develop
 Otherwise, you need to install [sbt](https://www.scala-sbt.org), and afterward, you can use the standard commands:
 
 ```shell
-sbt compile # build the project
 sbt test # run the tests
 sbt reStart # run the application (Main)
 sbt reStop # stop the application (Main)
@@ -36,19 +35,18 @@ To access authorized endpoints, use the `auth.token` from the `application.conf`
 _Please note that this authorization technique is used only for example purposes._
 _In real life, you should consider proper access management solutions._
 
-## Todo list
+## Dependencies
 
-- [x] Create a basic API to query books
-- [x] Remove usage of package objects cause it's deprecated in the Scala 3 (see [here](https://docs.scala-lang.org/scala3/reference/dropped-features/package-objects.html))
-- [ ] Add DB layer
-- [x] Add tests
+* [zio](https://github.com/zio) - type-safe, composable library for async and concurrent programming in Scala
+* [zio-http](https://github.com/zio/zio-http) - next-generation Scala framework for building scalable, correct, and efficient HTTP clients and servers
+* [zio-json](https://github.com/zio/zio-json) - fast, secure JSON library with tight ZIO integration
+* [tapir](https://github.com/softwaremill/tapir) - typed functional programming library for building HTTP API-s
+* [magnum](https://github.com/AugustNagro/magnum) - no dependencies, high productivity, database client for Scala
 
 ## Links:
 
 * [zio documentation](https://zio.dev/overview/getting-started)
-* [zio github](https://github.com/zio)
 * [tapir documentation](https://tapir.softwaremill.com/)
-* [tapir github](https://github.com/softwaremill/tapir)
 * [bootzooka: template microservice using tapir](https://softwaremill.github.io/bootzooka/)
 * [sbtx wrapper](https://github.com/dwijnand/sbt-extras#installation)
 * [nix documentation](https://nixos.org/manual/nix/stable/)

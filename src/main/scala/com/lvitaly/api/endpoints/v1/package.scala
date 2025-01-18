@@ -20,13 +20,15 @@ package object v1 extends Resolvers:
       .securityBearer()
       .serverLogic(session => unit => getBooks)
 
-  private val booksByYear: ApiEndpoint =
+  private val booksByHeight: ApiEndpoint =
     books
-      .in(query[Int]("year"))
-      .zServerLogic(year => getBooks(year))
+      .in(query[Int]("height"))
+      .zServerLogic(height => getBooks(height))
 
   val endpoints: List[ApiEndpoint] =
     List(
       booksAll,
-      booksByYear
+      booksByHeight
     )
+
+end v1

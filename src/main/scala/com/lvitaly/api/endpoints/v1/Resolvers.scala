@@ -1,14 +1,17 @@
 package com.lvitaly.api.endpoints.v1
 
 import com.lvitaly.api.model.*
+import com.lvitaly.api.service.*
 import zio.*
 
-private trait Resolvers {
-  type Books = List[Book]
+private trait Resolvers:
+
+  private type Books = List[Book]
+
+  protected def getBooks: ZIO[BookService, ApiError, Books] =
+    ZIO.serviceWithZIO[BookService](_.getBooks)
   
-  protected def getBooks: URIO[AppConfig, Books] =
-    ZIO.serviceWith[AppConfig](_.books)
-  
-  protected def getBooks(year: Int): URIO[AppConfig, Books] =
-    getBooks.map(_.filter(_.year == year))
-}
+  protected def getBooks(year: Int): ZIO[BookService, ApiError, Books] =
+    getBooks.map(_.filter(_.height == year))
+
+end Resolvers
