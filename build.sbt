@@ -1,4 +1,4 @@
-val tapirVersion      = "1.11.12"
+val tapirVersion      = "1.11.13"
 val zioVersion        = "2.1.14"
 val zioConfigVersion  = "4.0.3"
 val zioLoggingVersion = "2.4.0"
