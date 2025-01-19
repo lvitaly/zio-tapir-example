@@ -9,12 +9,9 @@ trait BookRepository:
   def getBooks(height: Int): IO[RepositoryError, Vector[Book]]
 
 object BookRepository:
-  val layer: URLayer[Transactor, BookRepository] =
-    ZLayer {
-        ZIO.serviceWith[Transactor](BookRepositoryLive(_))
-    }
+  val layer: URLayer[Transactor, BookRepository] = ZLayer.derive[BookRepositoryLive]
 
-class BookRepositoryLive(tx: Transactor) extends BookRepository:
+final class BookRepositoryLive(tx: Transactor) extends BookRepository:
   def getBooks: IO[RepositoryError, Vector[Book]] =
     tx.connect {
       sql"select * from book".query[Book].run()

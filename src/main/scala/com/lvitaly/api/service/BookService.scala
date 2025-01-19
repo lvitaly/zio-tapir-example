@@ -9,11 +9,8 @@ trait BookService:
   def getBooks(height: Int): IO[ApiError, List[Book]]
 
 object BookService:
-  val layer: URLayer[BookRepository, BookService] =
-    ZLayer {
-      ZIO.serviceWith[BookRepository](BookServiceLive(_))
-    }
+  val layer: URLayer[BookRepository, BookService] = ZLayer.derive[BookServiceLive]
 
-class BookServiceLive(repository: BookRepository) extends BookService:
+final class BookServiceLive(repository: BookRepository) extends BookService:
   def getBooks: IO[ApiError, List[Book]]              = repository.getBooks.map(_.toList)
   def getBooks(height: Int): IO[ApiError, List[Book]] = repository.getBooks(height).map(_.toList)
