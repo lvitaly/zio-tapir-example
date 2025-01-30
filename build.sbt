@@ -7,17 +7,17 @@ val h2Version         = "2.3.232"
 val hikariCPVersion   = "6.2.1"
 val magnumVersion     = "2.0.0-M1"
 
-lazy val rootProject = (project in file(".")).settings(
-  Seq(
+lazy val rootProject = (project in file("."))
+  .settings(
     name           := "zio-tapir-example",
     version        := "0.1.0-SNAPSHOT",
     organization   := "com.lvitaly.api",
-    scalaVersion   := "3.3.4",
+    scalaVersion   := "3.3.5",
     libraryDependencies ++= tapirKit ++ zioKit ++ jdbcKit ++ basicKit,
     testFrameworks := Seq(new TestFramework("zio.test.sbt.ZTestFramework")),
-    Test / fork    := true
+    Test / fork    := true,
+    revolverSettings
   )
-)
 
 lazy val tapirKit = Seq(
   "com.softwaremill.sttp.tapir"   %% "tapir-zio-http-server"    % tapirVersion,
