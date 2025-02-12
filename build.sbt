@@ -1,5 +1,5 @@
-val tapirVersion      = "1.11.13"
-val zioVersion        = "2.1.14"
+val tapirVersion      = "1.11.14"
+val zioVersion        = "2.1.15"
 val zioConfigVersion  = "4.0.3"
 val zioLoggingVersion = "2.4.0"
 val protoQuillVersion = "4.8.6"
@@ -25,7 +25,7 @@ lazy val tapirKit = Seq(
   "com.softwaremill.sttp.tapir"   %% "tapir-swagger-ui-bundle"  % tapirVersion,
   "com.softwaremill.sttp.tapir"   %% "tapir-json-zio"           % tapirVersion,
   "com.softwaremill.sttp.tapir"   %% "tapir-sttp-stub-server"   % tapirVersion % Test,
-  "com.softwaremill.sttp.client3" %% "zio-json"                 % "3.10.2"     % Test
+  "com.softwaremill.sttp.client3" %% "zio-json"                 % "3.10.3"     % Test
 )
 
 lazy val zioKit = Seq(
