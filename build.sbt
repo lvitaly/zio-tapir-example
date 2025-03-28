@@ -1,10 +1,10 @@
-val tapirVersion      = "1.11.14"
-val zioVersion        = "2.1.15"
-val zioConfigVersion  = "4.0.3"
-val zioLoggingVersion = "2.4.0"
+val tapirVersion      = "1.11.20"
+val zioVersion        = "2.1.16"
+val zioConfigVersion  = "4.0.4"
+val zioLoggingVersion = "2.5.0"
 val protoQuillVersion = "4.8.6"
 val h2Version         = "2.3.232"
-val hikariCPVersion   = "6.2.1"
+val hikariCPVersion   = "6.3.0"
 val magnumVersion     = "2.0.0-M1"
 
 lazy val rootProject = (project in file("."))
@@ -47,7 +47,7 @@ lazy val jdbcKit = Seq(
 )
 
 lazy val basicKit = Seq(
-  "ch.qos.logback" % "logback-classic" % "1.5.16"
+  "ch.qos.logback" % "logback-classic" % "1.5.18"
 )
 
 lazy val revolverSettings = Revolver.settings ++ Seq(
