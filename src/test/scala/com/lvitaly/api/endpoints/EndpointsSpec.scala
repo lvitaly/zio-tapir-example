@@ -2,10 +2,10 @@ package com.lvitaly.api.endpoints
 
 import com.lvitaly.api.model.{*, given}
 import com.lvitaly.api.{AppEnv, ZIOAppRuntime, appEnv}
-import sttp.client3.testing.SttpBackendStub
-import sttp.client3.ziojson.*
-import sttp.client3.{UriContext, basicRequest}
-import sttp.tapir.server.stub.TapirStubInterpreter
+import sttp.client4.testing.StreamBackendStub
+import sttp.client4.ziojson.asJson
+import sttp.client4.{UriContext, basicRequest}
+import sttp.tapir.server.stub4.TapirStreamStubInterpreter
 import sttp.tapir.ztapir.RIOMonadError
 import zio.test.Assertion.*
 import zio.test.{TestEnvironment, ZIOSpecDefault, assertZIO, testEnvironment}
@@ -18,7 +18,7 @@ object EndpointsSpec extends ZIOSpecDefault with ZIOAppRuntime:
 
   def spec = suite("Endpoints spec") {
     // given
-    val backendStub = TapirStubInterpreter(SttpBackendStub(new RIOMonadError[AppEnv]))
+    val backendStub = TapirStreamStubInterpreter(StreamBackendStub(new RIOMonadError[AppEnv]))
       .whenServerEndpointsRunLogic(all)
       .backend()
 

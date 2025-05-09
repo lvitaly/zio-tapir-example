@@ -1,9 +1,8 @@
-val tapirVersion      = "1.11.24"
-val sttpVersion       = "3.11.0"
+val tapirVersion      = "1.11.25"
+val sttpVersion       = "4.0.3"
 val zioVersion        = "2.1.17"
 val zioConfigVersion  = "4.0.4"
 val zioLoggingVersion = "2.5.0"
-val protoQuillVersion = "4.8.6"
 val h2Version         = "2.3.232"
 val hikariCPVersion   = "6.3.0"
 val magnumVersion     = "2.0.0-M1"
@@ -13,7 +12,7 @@ lazy val rootProject = (project in file("."))
     name           := "zio-tapir-example",
     version        := "0.1.0-SNAPSHOT",
     organization   := "com.lvitaly.api",
-    scalaVersion   := "3.3.5",
+    scalaVersion   := "3.3.6",
     libraryDependencies ++= tapirKit ++ zioKit ++ jdbcKit ++ basicKit,
     testFrameworks := Seq(new TestFramework("zio.test.sbt.ZTestFramework")),
     Test / fork    := true,
@@ -25,8 +24,8 @@ lazy val tapirKit = Seq(
   "com.softwaremill.sttp.tapir"   %% "tapir-prometheus-metrics" % tapirVersion,
   "com.softwaremill.sttp.tapir"   %% "tapir-swagger-ui-bundle"  % tapirVersion,
   "com.softwaremill.sttp.tapir"   %% "tapir-json-zio"           % tapirVersion,
-  "com.softwaremill.sttp.tapir"   %% "tapir-sttp-stub-server"   % tapirVersion % Test,
-  "com.softwaremill.sttp.client3" %% "zio-json"                 % sttpVersion  % Test
+  "com.softwaremill.sttp.tapir"   %% "tapir-sttp-stub4-server"  % tapirVersion % Test,
+  "com.softwaremill.sttp.client4" %% "zio-json"                 % sttpVersion  % Test
 )
 
 lazy val zioKit = Seq(
