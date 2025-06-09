@@ -1,11 +1,11 @@
-val tapirVersion      = "1.11.25"
-val sttpVersion       = "4.0.3"
-val zioVersion        = "2.1.17"
+val tapirVersion      = "1.11.33"
+val sttpVersion       = "4.0.8"
+val zioVersion        = "2.1.19"
 val zioConfigVersion  = "4.0.4"
 val zioLoggingVersion = "2.5.0"
 val h2Version         = "2.3.232"
 val hikariCPVersion   = "6.3.0"
-val magnumVersion     = "2.0.0-M1"
+val magnumVersion     = "2.0.0-M2"
 
 lazy val rootProject = (project in file("."))
   .settings(

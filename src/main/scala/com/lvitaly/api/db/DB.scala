@@ -3,8 +3,7 @@ package com.lvitaly.api.db
 import com.lvitaly.api.model.{AppConfig, DbConfig}
 import com.zaxxer.hikari.{HikariConfig, HikariDataSource}
 import zio.{RLayer, URIO, ZIO, ZLayer}
-
-import com.augustnagro.magnum.magzio.Transactor
+import com.augustnagro.magnum.magzio.TransactorZIO
 import zio.{URLayer, ZLayer}
 
 import javax.sql.DataSource
@@ -28,10 +27,5 @@ private val dataSource: RLayer[AppConfig, DataSource] =
       ZIO.attempt(ds.close()).orDie
     }
   }
-
-private val transactor: URLayer[DataSource, Transactor] =
-  ZLayer.environment[DataSource].flatMap { ds =>
-    Transactor.layer(ds.get)
-  }
   
-val live: RLayer[AppConfig, Transactor] = dataSource >>> transactor
+val live: RLayer[AppConfig, TransactorZIO] = dataSource >>> TransactorZIO.layer

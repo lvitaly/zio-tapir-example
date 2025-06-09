@@ -1,8 +1,9 @@
 package com.lvitaly.api.model
 
+import com.augustnagro.magnum.DbCodec
 import zio.json.*
 
-case class Author(name: String) derives JsonCodec
+case class Author(name: String) derives JsonCodec, DbCodec
 
 case class Book(
     id: Long,
@@ -12,4 +13,4 @@ case class Book(
     subGenre: String,
     height: Int,
     publisher: Option[String]
-) derives JsonCodec
+) derives JsonCodec, DbCodec
