@@ -10,7 +10,7 @@ object Main extends ZIOAppDefault with ZIOAppRuntime:
   override val bootstrap: ZLayer[ZIOAppArgs, Any, Any] =
     slf4jLogging >>> typesafeConfig
 
-  override def run: ZIO[Any with ZIOAppArgs with Scope, Any, Any] =
+  override def run: ZIO[Any & ZIOAppArgs & Scope, Any, Any] =
     server.serve.provideSomeLayer[Scope](appEnv)
 
 
