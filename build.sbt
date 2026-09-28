@@ -17,7 +17,7 @@ lazy val rootProject = (project in file("."))
     libraryDependencies ++= tapirKit ++ zioKit ++ jdbcKit ++ basicKit,
     testFrameworks := Seq(new TestFramework("zio.test.sbt.ZTestFramework")),
     Test / fork    := true,
-//    revolverSettings
+    revolverSettings
   )
 
 lazy val tapirKit = Seq(
