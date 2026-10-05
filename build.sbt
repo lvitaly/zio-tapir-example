@@ -6,7 +6,7 @@ val zioLoggingVersion = "2.5.3"
 val zioJsonVersion    = "1.1.0"
 val h2Version         = "2.5.252"
 val hikariCPVersion   = "7.1.0"
-val magnumVersion     = "2.0.0-M3"
+val magnumVersion     = "2.0.0-M4"
 
 lazy val rootProject = (project in file("."))
   .settings(
