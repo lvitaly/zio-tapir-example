@@ -1,12 +1,12 @@
-val tapirVersion      = "1.13.32"
-val sttpVersion       = "4.0.27"
-val zioVersion        = "2.1.26"
-val zioConfigVersion  = "4.1.0"
-val zioLoggingVersion = "2.5.3"
-val zioJsonVersion    = "1.1.0"
+val tapirVersion      = "1.14.1"
+val sttpVersion       = "4.1.2"
+val zioVersion        = "2.1.27"
+val zioConfigVersion  = "4.1.2"
+val zioLoggingVersion = "2.5.4"
+val zioJsonVersion    = "1.1.2"
 val h2Version         = "2.5.252"
 val hikariCPVersion   = "7.1.0"
-val magnumVersion     = "2.0.0-M4"
+val magnumVersion     = "2.0.0"
 
 lazy val rootProject = (project in file("."))
   .settings(
@@ -49,7 +49,7 @@ lazy val jdbcKit = Seq(
 )
 
 lazy val basicKit = Seq(
-  "ch.qos.logback" % "logback-classic" % "1.6.4"
+  "ch.qos.logback" % "logback-classic" % "1.6.6"
 )
 
 lazy val revolverSettings = RevolverPlugin.settings ++ Seq(
